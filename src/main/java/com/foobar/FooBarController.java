@@ -27,7 +27,7 @@ public class FooBarController {
     Foo foo = fooRepo.findById(id);
     Bar bar = barRepo.findById(id);
 
-    return foo.getFoo() + " " + bar.getBar();
+    return foo.getFoo() + " " + bar.getBar() + "!";
   }
 
 }
