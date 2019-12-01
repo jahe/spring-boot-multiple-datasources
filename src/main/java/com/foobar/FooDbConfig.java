@@ -29,7 +29,7 @@ public class FooDbConfig {
     return DataSourceBuilder.create().build();
   }
 
-  @Primary
+  @Primary//trzeci komentarz, drugi w tym pliku
   @Bean(name = "entityManagerFactory")
   public LocalContainerEntityManagerFactoryBean entityManagerFactory(
       EntityManagerFactoryBuilder builder, @Qualifier("dataSource") DataSource dataSource) {
