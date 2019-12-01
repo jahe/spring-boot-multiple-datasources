@@ -33,7 +33,7 @@ public class BarDbConfig {
     return builder.dataSource(dataSource).packages("com.foobar.bar.domain").persistenceUnit("bar")
         .build();
   }
-
+//Przykładowy komentarz
   @Bean(name = "barTransactionManager")
   public PlatformTransactionManager barTransactionManager(
       @Qualifier("barEntityManagerFactory") EntityManagerFactory barEntityManagerFactory) {
