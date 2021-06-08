@@ -13,33 +13,33 @@ import spock.lang.Specification
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class FooBarITSpec extends Specification {
 
-  @Autowired
-  TestRestTemplate restTemplate
+    @Autowired
+    TestRestTemplate restTemplate
 
-  @Autowired
-  FooRepository fooRepo
+    @Autowired
+    FooRepository fooRepo
 
-  @Autowired
-  BarRepository barRepo
+    @Autowired
+    BarRepository barRepo
 
-  def "Insert a Foo and a Bar Entity and retrieve the resulting String via GET /foobar/1"() {
-    given: "A Foo and a Bar Entity"
-    fooRepo.save([
-      foo: "Hello"
-    ] as Foo)
+    def "Insert a Foo and a Bar Entity and retrieve the resulting String via GET /foobar/1"() {
+        given: "A Foo and a Bar Entity"
+        fooRepo.save([
+                foo: "Hello"
+        ] as Foo)
 
-    barRepo.save([
-      bar: "World"
-    ] as Bar)
+        barRepo.save([
+                bar: "World"
+        ] as Bar)
 
-    when: "GET /foobar/1"
-    def result = restTemplate.getForObject("/foobar/1", String.class)
+        when: "GET /foobar/1"
+        def result = restTemplate.getForObject("/foobar/1", String.class)
 
-    then: "The result is \"Hello World!\""
-    result == "Hello World!"
+        then: "The result is \"Hello World!\""
+        result == "Hello World!"
 
-    cleanup:
-    fooRepo.deleteAll()
-    barRepo.deleteAll()
-  }
+        cleanup:
+        fooRepo.deleteAll()
+        barRepo.deleteAll()
+    }
 }
